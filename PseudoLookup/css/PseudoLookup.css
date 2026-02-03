@@ -1,0 +1,361 @@
+/**
+ * Styles for the Multi-Table Lookup PCF Control
+ * Designed to match native Dataverse lookup field styling
+ */
+
+.pseudo-lookup-wrapper {
+    width: 100%;
+}
+
+/* Container - matches Dataverse lookup field styling */
+.pseudo-lookup-container {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(245, 245, 245);
+    border: 0px solid #8a8886;
+    border-color: rgb(36, 36, 36);
+    border-image-width: 1;
+    border-width: 0px;
+    border-radius: 4px;
+    padding: 0px 4px 0px 4px;
+    transition: border-color 0.1s ease-in-out;
+    position: relative;
+    outline-color: rgb(36, 36, 36);
+}
+
+.pseudo-lookup-container:hover:not(.disabled) {
+    border-color: #323130;
+}
+
+.pseudo-lookup-container:focus-within:not(.disabled) {
+    border-color: #0078d4;
+    outline: none;
+}
+
+.pseudo-lookup-container.disabled {
+    background-color: #f3f2f1;
+    border-color: #c8c6c4;
+    cursor: not-allowed;
+}
+
+.pseudo-lookup-container.error {
+    border-color: #a4262c;
+}
+
+/* Content area - holds badges */
+.pseudo-lookup-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    min-height: 24px;
+    padding: 2px 0;
+}
+
+/* Empty state placeholder */
+.pseudo-lookup-placeholder {
+    color: #8a8886;
+    font-size: 14px;
+    font-family: "Segoe UI";
+    user-select: none;
+    padding: 0 8px;
+    transition: color 0.15s ease-in-out;
+}
+
+/* Placeholder when hovered - shows the actual placeholder text */
+.pseudo-lookup-placeholder.hovered {
+    color: #605e5c;
+}
+
+/* Lookup icon - magnifying glass symbol */
+.pseudo-lookup-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgb(97, 97, 97);
+    margin-right: -2px;
+}
+
+.pseudo-lookup-container.disabled .pseudo-lookup-icon {
+    opacity: 0.5;
+}
+
+/* Badge component - matches OOB lookup badge styling */
+.lookup-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgb(234, 238, 246);
+    border: 0px solid rgb(2, 92, 159);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.2;
+    max-width: 250px;
+    box-sizing: border-box;
+    transition: background-color 0.05s ease;
+    min-height: 24px;
+}
+
+.lookup-badge:hover {
+    background-color: rgb(212, 220, 237);
+}
+
+.lookup-badge.disabled {
+    background-color: #edebe9;
+    border-color: #c8c6c4;
+    padding-right: 6px; /* Symmetric padding when delete button is hidden */
+}
+
+.lookup-badge.disabled:hover {
+    background-color: rgb(212, 220, 237); /* Allow hover effect for clickable links */
+}
+
+.lookup-badge.loading {
+    background-color: #f3f2f1;
+    border-color: #c8c6c4;
+}
+
+.lookup-badge.loading:hover {
+    background-color: #f3f2f1;
+}
+
+/* Badge loading spinner */
+.lookup-badge-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #e1dfdd;
+    border-top-color: rgb(2, 92, 159);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+/* Badge icon - table entity icon on the left */
+.lookup-badge-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+/* Badge icon wrapper - for symbol font icons */
+.lookup-badge-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+    margin-left: 6px;
+    flex-shrink: 0;
+    color: rgb(2, 92, 159);
+}
+
+.lookup-badge-icon-wrapper span {
+    font-size: 14px;
+    line-height: 1;
+    color: rgb(2, 92, 159);
+}
+
+/* Badge text - styled to match OOB lookup */
+.lookup-badge-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #323130;
+    user-select: none;
+    padding: 0px 4px 0px 4px;
+    max-width: 160px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+/* Clickable badge text - always underlined and blue when linking enabled */
+.lookup-badge-text.clickable {
+    cursor: pointer;
+    color: rgb(2, 92, 159);
+    text-decoration: underline;
+}
+
+.lookup-badge-text.clickable:hover {
+    color: rgb(2, 92, 159);
+    text-decoration: underline;
+}
+
+.lookup-badge-text.clickable:focus {
+    outline: 1px dotted rgb(2, 92, 159);
+    outline-offset: 1px;
+}
+
+/* Badge delete button */
+.lookup-badge-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+.lookup-badge-delete:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.lookup-badge-delete:focus {
+    outline: 1px solid rgb(2, 92, 159);
+    outline-offset: -1px;
+}
+
+/* Delete icon - symbol font */
+.lookup-badge-delete span {
+    font-size: 10px;
+    line-height: 1;
+    color: rgb(2, 92, 159);
+}
+
+/* Loading spinner */
+.pseudo-lookup-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.pseudo-lookup-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f2f1;
+    border-top-color: rgb(2, 92, 159);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error message */
+.pseudo-lookup-error {
+    display: flex;
+    align-items: center;
+    color: #a4262c;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.pseudo-lookup-error-icon {
+    width: 12px;
+    height: 12px;
+    fill: #a4262c;
+    margin-right: 4px;
+}
+
+/* Accessibility - focus visible for keyboard navigation */
+.lookup-badge:focus-within {
+    box-shadow: 0 0 0 2px rgb(2, 92, 159);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .pseudo-lookup-container {
+        border-width: 2px;
+    }
+    
+    .lookup-badge {
+        border-width: 2px;
+    }
+    
+    .lookup-badge-text.clickable:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .pseudo-lookup-spinner,
+    .lookup-badge-spinner {
+        animation: none;
+    }
+    
+    .pseudo-lookup-container,
+    .pseudo-lookup-button,
+    .lookup-badge,
+    .lookup-badge-delete {
+        transition: none;
+    }
+}
+
+/* Dark mode support (if container provides dark mode context) */
+/*
+@media (prefers-color-scheme: dark) {
+    .pseudo-lookup-container {
+        background-color: #1b1a19;
+        border-color: #605e5c;
+    }
+    
+    .pseudo-lookup-container:hover:not(.disabled) {
+        border-color: #8a8886;
+    }
+    
+    .pseudo-lookup-container.disabled {
+        background-color: #252423;
+        border-color: #484644;
+    }
+    
+    .pseudo-lookup-placeholder {
+        color: #a19f9d;
+    }
+    
+    .pseudo-lookup-icon {
+        fill: #f3f2f1;
+    }
+    
+    .lookup-badge {
+        background-color: #323130;
+        border-color: #605e5c;
+    }
+    
+    .lookup-badge-text {
+        color: #f3f2f1;
+    }
+    
+    .lookup-badge-text.clickable:hover {
+        color: #2b88d8;
+    }
+    
+    .lookup-badge-delete-icon {
+        fill: #a19f9d;
+    }
+    
+    .lookup-badge-delete:hover:not(:disabled) {
+        background-color: #484644;
+    }
+    
+    .lookup-badge-delete:hover:not(:disabled) .lookup-badge-delete-icon {
+        fill: #f3f2f1;
+    }
+   
+}*/

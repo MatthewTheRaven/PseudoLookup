@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="mmn" constructor="PseudoLookup" version="0.0.8" display-name-key="PseudoLookup" description-key="Multi-table lookup control that binds to a text field and provides lookup-style record selection." control-type="virtual">
+    <!-- Bound property - stores the selected values as semicolon-delimited string (guid:tablename;guid:tablename) -->
+    <!-- Lookup tables - comma-separated list of table logical names -->
+    <!-- Allow multi-select -->
+    <!-- Enable linking -->
+    <!-- Placeholder text shown on hover when empty -->
+    <external-service-usage enabled="false" />
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    <property name="boundField" display-name-key="Bound Field" description-key="The text field that stores selected lookup values in format guid:tablename;guid:tablename" of-type-group="textTypes" usage="bound" required="true" />
+    <property name="recordNamesOutput" display-name-key="Record Names Output" description-key="Optional output field that receives the display names of selected records as a semicolon-delimited list" of-type-group="textTypes" usage="bound" required="false" />
+    <property name="selectionCount" display-name-key="Selection Count" description-key="Optional output field that contains the count of currently selected records" of-type="Whole.None" usage="bound" required="false" />
+    <property name="lookupTables" display-name-key="Lookup Tables" description-key="Comma-separated list of table logical names that users can select from (e.g., account,contact)" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="defaultEntityType" display-name-key="Default Entity Type" description-key="The default table to show in the lookup dialog when multiple tables are configured. If not set, uses the first table." of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="allowMultiSelect" display-name-key="Allow Multi-Select" description-key="Determines whether users can select multiple records or only a single record" of-type="TwoOptions" usage="input" required="false" />
+    <property name="maxSelections" display-name-key="Maximum Selections" description-key="Maximum number of records that can be selected when multi-select is enabled. Leave empty for unlimited." of-type="Whole.None" usage="input" required="false" />
+    <property name="enableLinking" display-name-key="Enable Linking" description-key="Determines whether clicking on a badge should open the record" of-type="TwoOptions" usage="input" required="false" />
+    <property name="openLinksInModal" display-name-key="Open Links in Modal" description-key="When enabled, clicking a linked record opens it in a modal dialog instead of navigating away" of-type="TwoOptions" usage="input" required="false" />
+    <property name="disableMru" display-name-key="Disable Most Recently Used" description-key="When enabled, disables the Most Recently Used items in the lookup dialog" of-type="TwoOptions" usage="input" required="false" />
+    <property name="placeholderText" display-name-key="Placeholder Text" description-key="Text shown when hovering over the empty control" of-type="SingleLine.Text" usage="input" required="false" default-value="Look for records" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/PseudoLookup.css" order="1" />
+      <platform-library name="Fluent" version="9.46.2" />
+      <platform-library name="React" version="16.14.0" />
+    </resources>
+    <type-group name="textTypes">
+      <type>SingleLine.Text</type>
+      <type>SingleLine.TextArea</type>
+      <type>Multiple</type>
+    </type-group>
+  </control>
+</manifest>
